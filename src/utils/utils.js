@@ -7,8 +7,11 @@ export const prepareInput = (input) => {
     return withoutSpace.toLowerCase();
 };
 
+// Theoretically not an union because it COULD contain duplicates,
+// however in this example data it works fine
+
 // to be honest just to be able to write one more test :)
-// otherwise a bit of an overkill
+// otherwise a bit of an overkill to write a util function for it
 export const arrayUnion = (array1, array2) => {
     return [...array1, ...array2];
 };
