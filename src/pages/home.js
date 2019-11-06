@@ -18,7 +18,7 @@ const getListItemHtml = (flight) => {
     </div>`;
 };
 
-const resetLoader = (placeholder, nrOfResults) => {
+const resetPlaceholder = (placeholder, nrOfResults) => {
     if (typeof nrOfResults !== 'undefined' && nrOfResults === 0) {
         placeholder.innerHTML = 'No flights found';
     } else {
@@ -52,7 +52,7 @@ const Home = {
                 placeholder.style.display = 'flex';
                 resultList.innerHTML = '';
                 const searchResult = await search(searchInput.value);
-                resetLoader(placeholder, searchResult.length);
+                resetPlaceholder(placeholder, searchResult.length);
                 searchResult.forEach((flight) => {
                     const listItemHtml = getListItemHtml(flight);
                     const li = document.createElement('li');
@@ -61,7 +61,7 @@ const Home = {
                 });
             }
             if (searchInput.value.length === 0) {
-                resetLoader(placeholder);
+                resetPlaceholder(placeholder);
                 resultList.innerHTML = '';
             }
         }, false);
