@@ -2,7 +2,7 @@
 
 Run `npm install` and then `npm run dev`
 
-# How to run the test
+# How to run tests
 
 Run `npm run test`
 

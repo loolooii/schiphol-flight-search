@@ -1,4 +1,4 @@
-import Home from './pages/flight-search';
+import Home from './pages/home';
 
 // our routes go here
 const routes = {
