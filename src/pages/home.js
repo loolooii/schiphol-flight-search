@@ -2,7 +2,7 @@
 import { search } from '../services/search';
 
 const getListItemHtml = (flight) => {
-    return `<div class="result-item">
+    return `<div class="search-result-item">
         <div class="column">
             <span class="flight-label">Destination</span>
             <span class="flight-value">${flight.airport}</span>
@@ -33,14 +33,14 @@ const Home = {
                     <input id="search-input" class="rw-input-text" data-input="true" type="text" placeholder="Search by destination or flight number" />
                 </div>
                 <div id="loader"><span>Loading...</span></div>
-                <ul id="result-list"></ul>
+                <ul id="search-result-list"></ul>
             </section>
         `;
         return view;
     },
     onRendered: async () => {
         const searchInput = document.getElementById('search-input');
-        const resultList = document.getElementById('result-list');
+        const resultList = document.getElementById('search-result-list');
         const loader = document.getElementById('loader');
 
         searchInput.addEventListener("keyup", async () => {

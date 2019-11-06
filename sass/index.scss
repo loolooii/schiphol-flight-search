@@ -23,7 +23,7 @@
     height: 60vh;
 }
 
-#result-list {
+#search-result-list {
     list-style: none;
     padding: 0;
     margin-top: 2em;
@@ -36,7 +36,7 @@
     }
 }
 
-.result-item {
+.search-result-item {
     padding: 1em;
     border: 1px solid #eae9ee;
     border-bottom-color: #1b60db;
@@ -48,17 +48,15 @@
     @media (min-width: 40em) {
         flex-direction: row;
     }
+
+    .flight-label {
+        color: #9491aa;
+        font-weight: bold;
+    }
+    
+    .flight-value {
+        font-weight: bold;
+    }
 }
 
-// #result-card {
-//     display: none;
-//     margin-top: 2em;
-// }
 
-.flight-label {
-    color: #9491aa;
-    font-weight: bold;
-}
-.flight-value {
-    font-weight: bold;
-}
