@@ -18,8 +18,12 @@ const getListItemHtml = (flight) => {
     </div>`;
 };
 
-const resetLoader = (loader) => {
-    loader.style.display = 'none';
+const resetLoader = (placeholder, nrOfResults) => {
+    if (typeof nrOfResults !== 'undefined' && nrOfResults === 0) {
+        placeholder.innerHTML = 'No flights found';
+    } else {
+        placeholder.style.display = 'none';
+    }
 };
 
 const Home = {
@@ -32,7 +36,7 @@ const Home = {
                     </label>
                     <input id="search-input" class="rw-input-text" data-input="true" type="text" placeholder="Search by destination or flight number" />
                 </div>
-                <div id="loader"><span>Loading...</span></div>
+                <div id="placeholder"></div>
                 <ul id="search-result-list"></ul>
             </section>
         `;
@@ -41,14 +45,14 @@ const Home = {
     onRendered: async () => {
         const searchInput = document.getElementById('search-input');
         const resultList = document.getElementById('search-result-list');
-        const loader = document.getElementById('loader');
+        const placeholder = document.getElementById('placeholder');
 
         searchInput.addEventListener("keyup", async () => {
             if (searchInput.value.length > 2) {
-                loader.style.display = 'flex';
+                placeholder.style.display = 'flex';
                 resultList.innerHTML = '';
                 const searchResult = await search(searchInput.value);
-                resetLoader(loader);
+                resetLoader(placeholder, searchResult.length);
                 searchResult.forEach((flight) => {
                     const listItemHtml = getListItemHtml(flight);
                     const li = document.createElement('li');
@@ -57,7 +61,7 @@ const Home = {
                 });
             }
             if (searchInput.value.length === 0) {
-                resetLoader(loader);
+                resetLoader(placeholder);
                 resultList.innerHTML = '';
             }
         }, false);
